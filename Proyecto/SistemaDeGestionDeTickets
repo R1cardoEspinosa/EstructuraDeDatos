@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Ticket {
+    private String description;
+
+    public Ticket(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+public class SupportTicketSystem {
+    public static void main(String[] args) {
+        Queue<Ticket> ticketQueue = new LinkedList<>();
+
+        // Simulación de la creación de tickets
+        createTicket(ticketQueue, "Problema de red");
+        createTicket(ticketQueue, "Error en la aplicacion");
+        createTicket(ticketQueue, "Problema de impresin");
+        createTicket(ticketQueue, "No puedo iniciar sesion");
+
+        // Simulación de la atención de los tickets
+        processTickets(ticketQueue);
+    }
+
+    private static void createTicket(Queue<Ticket> queue, String description) {
+        Ticket ticket = new Ticket(description);
+        queue.add(ticket);
+        System.out.println("Nuevo ticket creado: " + description);
+    }
+
+    private static void processTickets(Queue<Ticket> queue) {
+        while (!queue.isEmpty()) {
+            Ticket ticket = queue.poll(); // Obtiene y elimina el primer ticket de la cola (FIFO).
+            System.out.println("Atendiendo ticket: " + ticket.getDescription());
+            // Simulación de la resolución del problema.
+            // En un sistema real, aquí se realizaría el trabajo de soporte técnico.
+        }
+        System.out.println("Todos los tickets han sido atendidos.");
+    }
+}
